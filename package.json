@@ -1,0 +1,20 @@
+{
+  "name": "@vegascity/liveteach-reference-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/app.js",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest"
+  },
+  "author": "VegasCity",
+  "license": "UNLICENCED",
+  "private": true,
+  "dependencies": {
+    "ws": "^8.13.0"
+  },
+  "devDependencies": {
+    "jest": "^28.1.1"
+  }
+}

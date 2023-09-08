@@ -6,6 +6,7 @@
 # Node artifact files
 node_modules/
 dist/
+.env
 
 # Compiled Java class files
 *.class
@@ -48,3 +49,6 @@ Thumbs.db
 *.mov
 *.wmv
 
+# Terraform
+.terraform/
+.terraform.lock.hcl
