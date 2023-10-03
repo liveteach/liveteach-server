@@ -14,6 +14,7 @@ wss.on('connection', function connection(ws) {
             case "subscribe":
                 const channel = json.body.topic;
                 connections.set(channel,ws)
+
                 //return a Auth guid for teachers
                 if(json.body.topic === "teacher"){
                     let guid = getGuid()
@@ -25,7 +26,6 @@ wss.on('connection', function connection(ws) {
                 connections.delete(remove)
             break;
             case "message":
-                console.log(json)
                 // check standard Commands if Teacher controlled check the wallet and guid
                 switch (json.body.message) {
                     case "activate_class":
@@ -43,11 +43,9 @@ wss.on('connection', function connection(ws) {
             break;
             case "register":
                 teachers.set(json.body.wallet, json.body.guid)
-                console.log(teachers)
             break
             default:
                 ws.send("Unable to parse message");
-                console.log(connections)
             break;
         }
 
@@ -77,10 +75,6 @@ function getGuid() {
 
 function isValidWalletAndGuid(json){
     teachers.forEach((guid, wallet) => {
-        console.log(wallet)
-        console.log(guid)
-        console.log(json.body.wallet === wallet)
-        console.log(json.body.guid === guid)
         if(json.body.wallet === wallet && json.body.guid === guid){
             broadcast(json.body.topic, JSON.stringify({type:json.body.message, data: json.body.message, from: json.body.from}))
         }
