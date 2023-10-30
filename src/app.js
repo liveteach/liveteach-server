@@ -5,6 +5,16 @@ const connections = new Map();
 const teachers = new Map();
 
 wss.on('connection', function connection(ws) {
+    let msg = JSON.stringify({type:"sync", data: Date.now(), from: "server"})
+        ws.send(msg)
+  
+    
+    const interval = setInterval(function ping() {
+      connections.forEach(function each(ws) {  
+        let msg = JSON.stringify({type:"sync", data: Date.now(), from: "server"})
+        ws.send(msg)
+      });
+    }, 3000);
 
    ws.on('message', function message(data) {
 
@@ -53,6 +63,7 @@ wss.on('connection', function connection(ws) {
 
     ws.on('close', () => {
         connections.delete(ws);
+        clearInterval(interval);
     });
 
 });
