@@ -47,7 +47,7 @@ wss.on('connection', function connection(ws) {
                     break;
                     case "join_class":
                     case "exit_class":
-                        broadcast(json.body.topic, JSON.stringify({type:json.body.message, data: json.body.message, from: json.body.from}))
+                        broadcast(json.body.topic, JSON.stringify({type:json.body.message, data: json.body.payload, from: json.body.from}))
                     break;
                 }
             break;
@@ -87,7 +87,7 @@ function getGuid() {
 function isValidWalletAndGuid(json){
     teachers.forEach((guid, wallet) => {
         if(json.body.wallet === wallet && json.body.guid === guid){
-            broadcast(json.body.topic, JSON.stringify({type:json.body.message, data: json.body.message, from: json.body.from}))
+            broadcast(json.body.topic, JSON.stringify({type:json.body.message, data: json.body.payload, from: json.body.from}))
         }
     })
 }
