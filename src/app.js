@@ -43,6 +43,16 @@ wss.on('connection', function connection(ws) {
                     case "start_class":
                     case "end_class":
                     case "log":
+                    case "display_image":
+                    case "play_video":
+                    case "pause_video":
+                    case "resume_video":
+                    case "set_video_volume":
+                    case "play_model":
+                    case "pause_model":
+                    case "resume_model":
+                    case "deactivate_screens":
+                    case "deactivate_models":
                         isValidWalletAndGuid(json)
                     break;
                     case "join_class":
