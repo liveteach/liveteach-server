@@ -53,10 +53,14 @@ wss.on('connection', function connection(ws) {
                     case "resume_model":
                     case "deactivate_screens":
                     case "deactivate_models":
+                    case "content_unit_start":
+                    case "content_unit_end":
+                    case "content_unit_teacher_send":
                         isValidWalletAndGuid(json)
                     break;
                     case "join_class":
                     case "exit_class":
+                    case "content_unit_student_send":
                         broadcast(json.body.topic, JSON.stringify({type:json.body.message, data: json.body.payload, from: json.body.from}))
                     break;
                 }
