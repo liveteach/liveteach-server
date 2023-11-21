@@ -56,6 +56,7 @@ wss.on('connection', function connection(ws) {
                     case "content_unit_start":
                     case "content_unit_end":
                     case "content_unit_teacher_send":
+                    case "share_classroom_config":
                         isValidWalletAndGuid(json)
                     break;
                     case "join_class":
