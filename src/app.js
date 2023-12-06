@@ -43,10 +43,25 @@ wss.on('connection', function connection(ws) {
                     case "start_class":
                     case "end_class":
                     case "log":
+                    case "display_image":
+                    case "play_video":
+                    case "pause_video":
+                    case "resume_video":
+                    case "set_video_volume":
+                    case "play_model":
+                    case "pause_model":
+                    case "resume_model":
+                    case "deactivate_screens":
+                    case "deactivate_models":
+                    case "content_unit_start":
+                    case "content_unit_end":
+                    case "content_unit_teacher_send":
+                    case "share_classroom_config":
                         isValidWalletAndGuid(json)
                     break;
                     case "join_class":
                     case "exit_class":
+                    case "content_unit_student_send":
                         broadcast(json.body.topic, JSON.stringify({type:json.body.message, data: json.body.payload, from: json.body.from}))
                     break;
                 }
